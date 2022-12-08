@@ -23,6 +23,29 @@ export default function Textform(props) {
     setText("");
   }
 
+  const handleCopy = ()=> {
+    console.log('I am copy')
+    let texts=document.getElementById('Workarea')
+    texts.select();
+    navigator.clipboard.writeText(texts.value);
+  }
+
+  const handleExtraspaces = ()=> {
+    let reasult =text.replace(/\s+/g,' ').trim();
+    setText(reasult);
+  }
+
+  const handle1stCharacter =()=> {
+    let arr=text.split(" ");
+    for(let i=0;i<arr.length;i++ ) {
+      arr[i]=arr[i].charAt(0).toLocaleUpperCase() +arr[i].slice(1);
+    }
+    let newText=arr.join(" ");
+    setText(newText);
+  }
+
+  
+
   const handleonchange = (event)=> {
     console.log("onChange")
     setText(event.target.value);
@@ -38,12 +61,17 @@ export default function Textform(props) {
     <button className="btn btn-primary" onClick={handleUpcase}>CONVERT TO UPPERCASE</button>
     <button className="btn btn-primary mx-2" onClick={handleLowercase}>convert to lower case</button>
     <button className="btn btn-primary mx-2" onClick={handleclearText}>Clear text</button>
+    <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy text</button>
+    <button className="btn btn-primary mx-2" onClick={handleExtraspaces}>Remove extra spaces</button>
+    <button className="btn btn-primary mx-2" onClick={handle1stCharacter}>Make  Every word 1st Character uppercase</button>
     </div>
     <div className="container my-4">
       <h1>Your Test Summery</h1>
       <p><h3>You have written <b>{text.split(" ").length}</b> words and <b>{text.length} </b> characters</h3></p>
-      <div className="container"><h1><b>&</b></h1></div>
+      <br />
       <p><h3>Average time to read a word is <b>{0.008 * text.split(" ").length }</b> minutes</h3></p>
+      <br />
+      <p><h3>No. of Sentances <b>{text.split('.').length }</b></h3></p>
     </div>
 
     <div className="container">
