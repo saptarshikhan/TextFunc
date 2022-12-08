@@ -1,12 +1,16 @@
+import React,{ useState } from 'react';
 import './App.css';
 //import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 
+
 function App() {
+  const [mode,setmode] = useState('light'); //whether dark mode is enabled or not
+
   return (
     <>
-    <Navbar title="Textutils" aboutText="About"/>
+    <Navbar title="Textutils" aboutText="About" mode={mode}/>
 
     {/*<div className="container ">
       <About/>
