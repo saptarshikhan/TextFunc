@@ -53,10 +53,10 @@ export default function Textform(props) {
 
   return (
     <>
-    <div className='containar'>
+    <div className={`containar text-${props.mode==='light'? 'dark' : 'light'}`} >
         <h1>{props.heading}</h1>
     <div className="mb-3 my-3">
-    <textarea className="form-control" value={text} onChange={handleonchange} id="Workarea" rows="8"></textarea>
+    <textarea className={`form-control text-${props.mode==='light'? 'dark' : 'light'} bg-${props.mode==='light'?'light':'secondary'} `} value={text} onChange={handleonchange} id="Workarea" rows="8"></textarea>
     </div>
     <button className="btn btn-primary" onClick={handleUpcase}>CONVERT TO UPPERCASE</button>
     <button className="btn btn-primary mx-2" onClick={handleLowercase}>convert to lower case</button>
@@ -65,18 +65,18 @@ export default function Textform(props) {
     <button className="btn btn-primary mx-2" onClick={handleExtraspaces}>Remove extra spaces</button>
     <button className="btn btn-primary mx-2" onClick={handle1stCharacter}>Make  Every word 1st Character uppercase</button>
     </div>
-    <div className="container my-4">
+    <div className={`container my-4 text-${props.mode==='light'? 'dark' : 'light'}`}>
       <h1>Your Test Summery</h1>
-      <p><h3>You have written <b>{text.split(" ").length}</b> words and <b>{text.length} </b> characters</h3></p>
+      <p><h3>You have written <b>{text.split(" ").length-1}</b> words and <b>{text.length} </b> characters</h3></p>
       <br />
       <p><h3>Average time to read a word is <b>{0.008 * text.split(" ").length }</b> minutes</h3></p>
       <br />
-      <p><h3>No. of Sentances <b>{text.split('.').length }</b></h3></p>
+      <p><h3>No. of Sentances <b>{text.split('.').length -1}</b></h3></p>
     </div>
 
-    <div className="container">
+    <div className={`container my-4 text-${props.mode==='light'? 'dark' : 'light'}`}>
       <h2>Preview</h2>
-      <p><h5>{text}</h5></p>
+      <p><h5>{text.length>0?text:"Enter something in the textbox to preview it here"}</h5></p>
     </div>
     </>
   )
