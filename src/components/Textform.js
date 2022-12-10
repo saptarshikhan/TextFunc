@@ -12,15 +12,18 @@ export default function Textform(props) {
     console.log("Uppercase was clicked");
     let newText=text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to UpperCase","success")
   }
 
   const handleLowercase = ()=> {
     let lowerText=text.toLowerCase();
     setText(lowerText);
+    props.showAlert("Converted to LowerCase","success")
   }
 
   const handleclearText = ()=> {
     setText("");
+    props.showAlert("Text Cleared","success")
   }
 
   const handleCopy = ()=> {
@@ -28,11 +31,15 @@ export default function Textform(props) {
     let texts=document.getElementById('Workarea')
     texts.select();
     navigator.clipboard.writeText(texts.value);
+    props.showAlert("Copied to Clipboard","success")
+
   }
 
   const handleExtraspaces = ()=> {
     let reasult =text.replace(/\s+/g,' ').trim();
     setText(reasult);
+    props.showAlert("Extra spaces are deleted","success")
+
   }
 
   const handle1stCharacter =()=> {
@@ -42,6 +49,8 @@ export default function Textform(props) {
     }
     let newText=arr.join(" ");
     setText(newText);
+    props.showAlert("Capitalised first character","success")
+
   }
 
   
@@ -69,7 +78,7 @@ export default function Textform(props) {
       <h1>Your Test Summery</h1>
       <p><h3>You have written <b>{text.split(" ").length-1}</b> words and <b>{text.length} </b> characters</h3></p>
       <br />
-      <p><h3>Average time to read a word is <b>{0.008 * text.split(" ").length }</b> minutes</h3></p>
+      <p><h3>Average time to read a word is <b>{0.008 * (text.split(" ").length-1) }</b> minutes</h3></p>
       <br />
       <p><h3>No. of Sentances <b>{text.split('.').length -1}</b></h3></p>
     </div>
